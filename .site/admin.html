@@ -66,14 +66,20 @@
 				
 		<div class="code-card">
 				<h1> gps data</h1>
-				<section> {{  session['d'].accuracy  }}</section>
+				{% if session['loc']  %}
+				<section> {{  session['loc'].accuracy  }}</section>
 				<section> lat : {{  session['loc'].latitude  }}</section>
 				<section>lon : {{  session['loc'].longitude  }}</section>
 				<section>{{  session['loc'].speed  }}</section>
 				<section>{{  session['loc'].altitude  }}</section>
 				<section>{{  session['loc'].heading  }}</section><section>{{  session['loc'].altitudeAccuracy  }}</section>
 
-				 </p>		</div>
+		</p>		
+				{% else %}
+						<p>no data</p>
+						    	{% endif  %}
+				
+		</div>
 				
 					
 		
@@ -81,13 +87,22 @@
 				
 				<div class="code-card">
 						<h1>map data</h1>
-						<img width="380" height="300" class="img" src="https://maps.geoapify.com/v1/staticmap?style=toner-grey&width=350&height=300&center=lonlat:{{  session['loc'].longitude  }},{{  session['loc'].latitude  }}&zoom=10.9318&apiKey=83201a4a9e1e477399fe95ceb2f855e9">
+								{% if session['loc']  %}
+						<img width="380" height="300" class="img" src="https://maps.geoapify.com/v1/staticmap?style=toner-grey&width=350&height=300&center=lonlat:{{ session['loc'].longitude  }},{{  session['loc'].latitude  }}&zoom=10.9318&apiKey=83201a4a9e1e477399fe95ceb2f855e9">
+									{% else %}
+						<p>no img</p>
+						    	{% endif  %}
+						   
 						
 				</div>
 				
 		<div class="code-card">
 				<h1>devise </h1>
-				<abbr>{{  session['d']  }}</abbr>
+				{% if session['d']  %}
+				   <p>{{  session['d']  }}</p>
+				{% else %}
+				<p>no data</p>
+				{% endif  %}
 								
 		</div>
 		
