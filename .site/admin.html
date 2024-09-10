@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+		<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+		<title>admin!</title>
+</head>
+<style>
+
+		@media (min-width: 768px) and (min-width: 768px) {
+  body {
+    color: lime;
+    
+    overflow: auto;
+  		font-size: 18px;
+  }
+				
+				p,h1, h2, h3, h4, h5, h6, form {
+    font-family: 'Consolas', monospace;
+    color: #00FF00; 
+		  font-size: 48px;
+}
+				
+				
+				nav {
+            background-color: #000; /* Black background */
+            color: #00FF00; /* Green text */
+            padding: 35px;
+						      font-size: 48px;
+        }
+				
+					header{
+		  		font-size: 80px;
+							animation: blinking 5s infinite;
+		}
+				
+				@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+				
+				.container {
+						display: grid;
+						grid-template-areas:
+						"c1 c2" 
+						"c3 c3";
+						
+						
+}
+		
+	.code-card:nth-child(1) {
+			grid-area: c1;
+			width:400px; 
+			  height: 400px; 
+			
+			 p {
+			 		font-size: 23px;
+			 }
+			
+						
+}
+					.code-card:nth-child(2) {
+							grid-area: c2;
+							width: 400px; 
+			  height: 400px; 
+			 		font-size: 10px;
+					}
+				.code-card:nth-child(3) {
+						grid-area: c3;
+						width: 900px; 
+			  height: 540px; 
+							font-size: 10px;
+						
+				}
+				
+				
+				
+		}
+         .img {
+     resize: both;
+     overflow: auto;
+   }
+</style>
+<body>
+		<link rel="stylesheet" type="text/css" href="/index.ccss">
+		
+		
+		<header>  hacking ...</header>
+		<nav>
+        <a href="/">Home</a>
+        <a href="/tool">Tools</a>
+        <a href="/admin">Services</a>
+        <a href="#">Contact</a>
+		</nav>
+		<script>
+		setInterval(function() {
+    window.location.href = window.location.href;
+}, 1000);
+		</script>
+		
+		
+		
+		<style>
+		body {
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: lime;
+    resize: both;
+    overflow: auto;
+}
+		nav {
+            background-color: #000; /* Black background */
+            color: #00FF00; /* Green text */
+            text-align: center;
+            padding: 10px;
+        }
+        nav a {
+            color: #00FF00; /* Green text */
+            padding: 14px 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #00FF00; /* Green background on hover */
+            color: #000; /* Black text on hover */
+        }
+		font-family:Arial, sans-serif; {
+      margin: 9;
+      padding: 10;
+}
+
+ h1, h2, h3, h4, h5, h6, form {
+    font-family: 'Consolas', monospace;
+    color: #00FF00; 
+		  font-size: 28px;
+}
+
+a {
+    color: #00FF00;
+}
+
+p, li, td, th {
+    font-family: 'Lucida Console', monospace;
+    color: #00FF00;
+		font-size: 28px;
+		  
+}
+
+		
+
+.code-card {
+		
+			background-color: #111;
+            color: #00FF00;
+            border: 1px solid #00FF00;
+            padding: 10px;
+            box-shadow: 3px 3px 0 lime;
+			p {
+					
+			  font-weight: bold;
+			}
+		h1 {
+				font-size 8px;
+		}
+}
+
+			
+		
+		
+
+  		
+  		        /* CSS for hacker-themed menu bar with buttons */
+        body {
+            margin: 10;
+            padding: 10;
+            font-family: Arial, sans-serif;
+            resize: both;
+            overflow: auto;
+        }
+         .img {
+     resize: both;
+     overflow: auto;
+   }
+   
+
+
+
+
+		
+		</style>
+		
+	
+		<div class="container">
+				
+			
+		<div class="code-card">
+				<h1> gps data</h1>
+				
+				{% if session['loc']  %}
+				<p> accuracy: {{  session['loc'].accuracy  }}</p>
+				<p> lat : {{  session['loc'].latitude  }}</p>
+				<p>lon : {{  session['loc'].longitude  }}</p>
+				<p> speed: {{  session['loc'].speed  }}</p>
+				<p>altitude :{{  session['loc'].altitude  }}</p>
+				<p>heading{{  session['loc'].heading  }}</p>
+				<p>altitudeAccuracy :{{  session['loc'].altitudeAccuracy  }}</p>
+				
+				{% else %}
+						<p>no data</p>
+						    	{% endif  %}
+				
+		</div>
+				
+
+				
+				<div class="code-card">
+						<h1>map data</h1>
+								{% if session['loc']  %}
+						<img width="380" height="300" class="img" src="https://maps.geoapify.com/v1/staticmap?style=toner-grey&width=350&height=300&center=lonlat:{{ session['loc'].longitude  }},{{  session['loc'].latitude  }}&zoom=10.9318&apiKey=83201a4a9e1e477399fe95ceb2f855e9"></img>
+									{% else %}
+						<p>no map img</p>
+						    	{% endif  %}
+						   
+						
+				</div>
+				
+		<div class="code-card">
+				<h1>devise </h1>
+					
+				{% if session['da']  %}
+				   <p>ip :  </p>
+				<p>  </p>
+				<p> {{  session['da'].userAgent  }} </p>
+				<p> {{  session['da'].language  }} </p>
+				<p> {{  session['da'].browserName  }} </p>
+				<p> {{  session['da'].browserVersion  }} </p>
+				<p> {{  session['da'].browserPlatform  }} </p>
+				<p> {{  session['da'].screenWidth  }} </p>
+				<p> . </p>
+				{% else %}
+				<p>no data</p>
+				{% endif  %}
+			
+		</div>
+				<div class="code-card">
+						
+						<h1>viwer image </h1>
+						{% if url_for('img') %}
+	  					<img width="380" height="300"  src="{{ url_for('img') }}" title="img data"align="10">
+						 			{% else %}
+       				<p>no data</p>
+    				{% endif  %}
+			
+						
+				</div>
+				
+				
+		</dir>
+		<script>
+				
+    </script>
+		
+		
+		
+		
+
+</body>
+</html>
